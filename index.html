@@ -6,19 +6,16 @@
 
     <title>BluePlayer</title>
 
-    <link rel="stylesheet" href="src/css/style.css" />
-
     <link rel="manifest" href="manifest.json" />
-
-    <link rel="icon" href="icon-192.png" />
+    <link rel="stylesheet" href="src/css/style.css" />
 
     <meta name="theme-color" content="#0b0f1a" />
   </head>
 
   <body>
-    <div class="layout">
+    <div class="container">
       <aside class="sidebar">
-        <h1 class="logo">BluePlayer</h1>
+        <h1>BluePlayer</h1>
 
         <button id="upload-btn">Adicionar músicas</button>
 
@@ -27,10 +24,10 @@
         <ul id="playlist"></ul>
       </aside>
 
-      <main class="player">
-        <canvas id="visualizer"></canvas>
+      <main class="player-area">
+        <canvas id="visualizer" class="visualizer"></canvas>
 
-        <h2 id="track-title">Selecione uma música</h2>
+        <h2 id="trackTitle">Selecione uma música</h2>
 
         <div class="controls">
           <button id="prev">⏮</button>
@@ -38,35 +35,39 @@
           <button id="next">⏭</button>
         </div>
 
-        <input type="range" id="progress" value="0" />
+        <input type="range" id="progress" class="progress" value="0" />
       </main>
     </div>
 
-    <footer class="footer">
-      <div class="volume-area">
-        <label>Volume</label>
-
-        <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
-      </div>
+    <footer class="bottom-controls">
+      <input
+        type="range"
+        id="volume"
+        class="volume"
+        min="0"
+        max="1"
+        step="0.01"
+        value="1"
+      />
 
       <div class="eq">
-        <div class="eq-band">
+        <div>
           <label>Grave</label>
           <input type="range" id="bass" min="-10" max="10" value="0" />
         </div>
 
-        <div class="eq-band">
+        <div>
           <label>Médio</label>
           <input type="range" id="mid" min="-10" max="10" value="0" />
         </div>
 
-        <div class="eq-band">
+        <div>
           <label>Agudo</label>
           <input type="range" id="treble" min="-10" max="10" value="0" />
         </div>
       </div>
 
-      <button id="fullscreen">⛶</button>
+      <button id="fullscreen" class="fullscreen">⛶</button>
     </footer>
 
     <script src="src/js/player.js"></script>
