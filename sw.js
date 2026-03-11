@@ -1,4 +1,4 @@
-const CACHE_NAME = "blueplayer-cache-v2";
+const CACHE_NAME = "blueplayer-cache-v1";
 
 const FILES = [
   "./",
