@@ -1,0 +1,313 @@
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: #0b0f1a;
+  color: white;
+}
+
+/* LAYOUT */
+
+.layout {
+  display: flex;
+  height: calc(100vh - 90px);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 260px;
+  background: #05050f;
+  padding: 20px;
+  overflow: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* BOTÃO */
+
+#upload-btn {
+  background: #3a7bff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+#upload-btn:hover {
+  background: #2f66d3;
+}
+
+/* PLAYLIST */
+
+#playlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#playlist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#playlist li:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#playlist span {
+  flex: 1;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* REMOVER */
+
+.remove {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+#playlist li:hover .remove {
+  opacity: 1;
+}
+
+.remove:hover {
+  color: #ff5c5c;
+}
+
+/* PLAYER */
+
+.player {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* VISUALIZER */
+
+canvas {
+  width: 70%;
+  height: 220px;
+  background: black;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* TITULO */
+
+#track-title {
+  margin-bottom: 20px;
+  color: #ddd;
+  text-align: center;
+}
+
+/* CONTROLES */
+
+.controls {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #1e1e40;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  background: #2a2a55;
+}
+
+/* PROGRESSO */
+
+#progress {
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+.footer {
+  height: 90px;
+  background: #05050f;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  gap: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* VOLUME METADE DA TELA */
+
+.volume-area {
+  flex: 1;
+}
+
+.slider-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#volume {
+  width: 100%;
+  appearance: none;
+  height: 4px;
+  background: linear-gradient(90deg, #1e2a5a, #3a7bff);
+  border-radius: 4px;
+  outline: none;
+}
+
+#volume::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #3a7bff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #3a7bff;
+  cursor: pointer;
+}
+
+/* EQUALIZADOR */
+
+.eq {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.eq-band {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+/* SLIDER EQ */
+
+.eq-band input {
+  width: 70px;
+  appearance: none;
+  height: 4px;
+  background: linear-gradient(90deg, #1e2a5a, #3a7bff);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.eq-band input::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #3a7bff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px #3a7bff;
+}
+
+/* LED INDICADOR */
+
+.eq-band::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3a7bff;
+  opacity: 0;
+  position: absolute;
+  top: -10px;
+  transition: 0.2s;
+}
+
+.eq-band:hover::before {
+  opacity: 1;
+}
+
+.eq-band label {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.eq-value {
+  font-size: 11px;
+  color: #4da3ff;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+/* FULLSCREEN */
+
+#fullscreen {
+  margin-left: auto;
+  border: none;
+  background: #1e1e40;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#fullscreen:hover {
+  background: #2a2a55;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 200px;
+  }
+
+  canvas {
+    width: 90%;
+  }
+
+  #progress {
+    width: 80%;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 15px;
+  }
+
+  .eq {
+    margin-top: 10px;
+  }
+}
