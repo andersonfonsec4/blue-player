@@ -289,16 +289,26 @@ body {
   color: #aaa;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
     height: auto;
-    overflow: visible;
+    overflow-x: hidden;
   }
 
+  /* PLAYER PRIMEIRO */
+
+  .player {
+    order: 1;
+    width: 100%;
+  }
+
+  /* PLAYLIST DEPOIS */
+
   .sidebar {
+    order: 2;
     width: 100%;
     height: auto;
   }
@@ -308,14 +318,14 @@ body {
     overflow-y: auto;
   }
 
-  .player {
-    width: 100%;
-  }
+  /* VISUALIZER */
 
   #music-bars {
     width: 100%;
     height: 120px;
   }
+
+  /* CONTROLES */
 
   .controls {
     justify-content: center;
@@ -327,6 +337,8 @@ body {
     height: 60px;
   }
 
+  /* EQUALIZER */
+
   .equalizer-container {
     width: 95%;
   }
@@ -335,6 +347,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  /* FOOTER */
 
   .footer {
     flex-direction: column;
