@@ -20,33 +20,26 @@ let dragIndex = null;
 /* UPLOAD */
 
 fileInput.addEventListener("change", (e) => {
-
   const files = e.target.files;
 
   for (let file of files) {
-
     playlist.push({
       title: file.name,
       file: URL.createObjectURL(file),
     });
-
   }
 
   render();
 
-  // limpa o input para permitir selecionar novamente
   fileInput.value = "";
-
 });
 
 /* RENDER PLAYLIST */
 
 function render() {
-
   playlistUI.innerHTML = "";
 
   playlist.forEach((track, i) => {
-
     const li = document.createElement("li");
     li.draggable = true;
 
@@ -54,11 +47,9 @@ function render() {
     name.textContent = track.title;
 
     name.onclick = () => {
-
       player.load(i);
       player.play();
       updateTitle();
-
     };
 
     const remove = document.createElement("button");
@@ -66,7 +57,6 @@ function render() {
     remove.className = "remove";
 
     remove.onclick = (e) => {
-
       e.stopPropagation();
 
       playlist.splice(i, 1);
@@ -76,131 +66,92 @@ function render() {
       }
 
       render();
-
     };
 
     li.addEventListener("dragstart", () => {
-
       dragIndex = i;
-
     });
 
     li.addEventListener("dragover", (e) => {
-
       e.preventDefault();
-
     });
 
     li.addEventListener("drop", () => {
-
       const item = playlist.splice(dragIndex, 1)[0];
 
       playlist.splice(i, 0, item);
 
       render();
-
     });
 
     li.appendChild(name);
     li.appendChild(remove);
 
     playlistUI.appendChild(li);
-
   });
-
 }
 
 /* UPDATE TITLE */
 
 function updateTitle() {
-
   if (playlist[player.index]) {
-
     title.textContent = playlist[player.index].title;
-
   }
-
 }
 
 /* CONTROLES */
 
 playBtn.onclick = () => {
-
   if (!playlist.length) return;
 
   if (!player.audio.src) {
-
     player.load(0);
     updateTitle();
-
   }
 
   player.toggle();
-
 };
 
 nextBtn.onclick = () => {
-
   if (!playlist.length) return;
 
   player.next();
-
 };
 
 prevBtn.onclick = () => {
-
   if (!playlist.length) return;
 
   player.prev();
-
 };
 
 /* PROGRESS */
 
 player.audio.ontimeupdate = () => {
-
   if (player.audio.duration) {
-
-    progress.value =
-      (player.audio.currentTime / player.audio.duration) * 100;
-
+    progress.value = (player.audio.currentTime / player.audio.duration) * 100;
   }
-
 };
 
 progress.oninput = () => {
-
   if (player.audio.duration) {
-
-    player.audio.currentTime =
-      (progress.value / 100) * player.audio.duration;
-
+    player.audio.currentTime = (progress.value / 100) * player.audio.duration;
   }
-
 };
 
 /* VOLUME */
 
 volume.oninput = () => {
-
   player.audio.volume = volume.value;
-
 };
 
 /* FULLSCREEN */
 
 fullscreenBtn.onclick = () => {
-
   if (!document.fullscreenElement) {
-
     document.documentElement.requestFullscreen().catch(() => {});
-
   } else {
-
     document.exitFullscreen();
-
   }
-
 };
 
 /* EQUALIZER */
@@ -208,13 +159,9 @@ fullscreenBtn.onclick = () => {
 const eqSliders = document.querySelectorAll(".eq-band input");
 
 eqSliders.forEach((slider, index) => {
-
   slider.addEventListener("input", () => {
-
     player.setEQ(index, slider.value);
-
   });
-
 });
 
 /* PRESETS */
@@ -222,33 +169,42 @@ eqSliders.forEach((slider, index) => {
 const presetSelect = document.getElementById("preset");
 
 const presets = {
+  flat: [0, 0, 0, 0, 0, 0, 0, 0, 0],
 
-  flat: [0,0,0,0,0,0,0,0,0],
+  pop: [-1, 2, 4, 4, 2, 0, -1, -1, -1],
 
-  pop: [-1,2,4,4,2,0,-1,-1,-1],
+  rock: [4, 3, 2, 1, 0, 1, 2, 3, 4],
 
-  rock: [4,3,2,1,0,1,2,3,4],
-
-  dance: [6,5,4,2,0,-2,-2,-2,-2],
-
+  dance: [6, 5, 4, 2, 0, -2, -2, -2, -2],
 };
 
 if (presetSelect) {
-
   presetSelect.addEventListener("change", () => {
-
     const preset = presets[presetSelect.value];
 
     if (!preset) return;
 
     eqSliders.forEach((slider, index) => {
-
       slider.value = preset[index];
 
       player.setEQ(index, preset[index]);
-
     });
-
   });
+}
 
+/* TOGGLE PLAYLIST (MOBILE) */
+
+const toggleBtn = document.getElementById("toggle-playlist");
+const playlistElement = document.getElementById("playlist");
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    playlistElement.classList.toggle("open");
+
+    if (playlistElement.classList.contains("open")) {
+      toggleBtn.textContent = "Esconder Playlist";
+    } else {
+      toggleBtn.textContent = "Mostrar Playlist";
+    }
+  });
 }
