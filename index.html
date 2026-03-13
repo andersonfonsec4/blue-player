@@ -1,126 +1,167 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>BluePlayer</title>
+<head>
 
-    <link rel="stylesheet" href="src/css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="manifest" href="manifest.json" />
+<title>BluePlayer</title>
 
-    <link rel="icon" href="icon-192.png" />
+<link rel="stylesheet" href="src/css/style.css">
 
-    <meta name="theme-color" content="#0b0f1a" />
-  </head>
+<link rel="manifest" href="manifest.json">
 
-  <body>
-    <div class="layout">
-      <aside class="sidebar">
-        <h1 class="logo">BluePlayer</h1>
+<link rel="icon" href="icon-192.png">
 
-        <label for="file-input" id="upload-btn"> Adicionar músicas </label>
+<meta name="theme-color" content="#0b0f1a">
 
-        <input type="file" id="file-input" multiple accept="audio/*" hidden />
+</head>
 
-        <ul id="playlist"></ul>
-      </aside>
+<body>
 
-      <main class="player">
-        <canvas id="music-bars"></canvas>
+<div class="layout">
 
-        <div class="equalizer-container">
-          <div class="eq-header">
-            <label>Preset:</label>
+<aside class="sidebar">
 
-            <select id="preset">
-              <option value="flat">Flat</option>
-              <option value="pop">Pop</option>
-              <option value="rock">Rock</option>
-              <option value="dance">Dance</option>
-            </select>
-          </div>
+<h1 class="logo">BluePlayer</h1>
 
-          <div class="eq-bands">
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>60Hz</span>
-            </div>
+<label for="file-input" id="upload-btn">
+Adicionar músicas
+</label>
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>120Hz</span>
-            </div>
+<input type="file" id="file-input" multiple accept="audio/*" hidden>
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>250Hz</span>
-            </div>
+<ul id="playlist"></ul>
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>500Hz</span>
-            </div>
+</aside>
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>1k</span>
-            </div>
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>2k</span>
-            </div>
+<main class="player">
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>4k</span>
-            </div>
+<canvas id="music-bars"></canvas>
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>8k</span>
-            </div>
+<div class="equalizer-container">
 
-            <div class="eq-band">
-              <input type="range" min="-10" max="10" value="0" />
-              <span>16k</span>
-            </div>
-          </div>
-        </div>
+<div class="eq-header">
 
-        <h2 id="track-title">Selecione uma música</h2>
+<label>Preset:</label>
 
-        <div class="controls">
-          <button id="prev">⏮</button>
-          <button id="play">▶</button>
-          <button id="next">⏭</button>
-        </div>
+<select id="preset">
 
-        <input type="range" id="progress" value="0" />
-      </main>
-    </div>
+<option value="flat">Flat</option>
+<option value="pop">Pop</option>
+<option value="rock">Rock</option>
+<option value="dance">Dance</option>
 
-    <footer class="footer">
-      <div class="volume-area">
-        <label>Volume</label>
+</select>
 
-        <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
-      </div>
+</div>
 
-      <button id="fullscreen">⛶</button>
-    </footer>
 
-    <script src="src/js/player.js"></script>
-    <script src="src/js/playlist.js"></script>
-    <script src="src/js/ui.js"></script>
-    <script src="src/js/visualizer.js"></script>
+<div class="eq-bands">
 
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./sw.js");
-      }
-    </script>
-  </body>
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>60Hz</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>120Hz</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>250Hz</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>500Hz</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>1k</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>2k</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>4k</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>8k</span>
+</div>
+
+<div class="eq-band">
+<input type="range" min="-10" max="10" value="0">
+<span>16k</span>
+</div>
+
+</div>
+
+</div>
+
+
+<h2 id="track-title">Selecione uma música</h2>
+
+<div class="controls">
+
+<button id="prev">⏮</button>
+<button id="play">▶</button>
+<button id="next">⏭</button>
+
+</div>
+
+<input type="range" id="progress" value="0">
+
+</main>
+
+</div>
+
+
+<footer class="footer">
+
+<div class="volume-area">
+
+<label>Volume</label>
+
+<input
+type="range"
+id="volume"
+min="0"
+max="1"
+step="0.01"
+value="1"
+>
+
+</div>
+
+<button id="fullscreen">⛶</button>
+
+</footer>
+
+
+<script src="src/js/player.js"></script>
+<script src="src/js/ui.js"></script>
+<script src="src/js/visualizer.js"></script>
+
+<script>
+
+if ("serviceWorker" in navigator) {
+navigator.serviceWorker.register("./sw.js");
+}
+
+</script>
+
+</body>
+
 </html>

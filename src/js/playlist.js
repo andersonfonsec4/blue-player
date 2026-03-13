@@ -14,7 +14,7 @@ fileInput.addEventListener("change", (event) => {
     const url = URL.createObjectURL(file);
 
     playlist.push({
-      name: file.name,
+      title: file.name,
       file: url,
     });
   });
@@ -31,7 +31,7 @@ function renderPlaylist() {
     const li = document.createElement("li");
 
     const span = document.createElement("span");
-    span.textContent = track.name;
+    span.textContent = track.title;
 
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "✕";
