@@ -11,7 +11,7 @@ body {
 
 .layout {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   height: calc(100dvh - 90px);
   overflow: hidden;
 }
@@ -32,7 +32,7 @@ body {
 /* esconder barra de arraste no desktop */
 
 .drag-bar {
-  display: none;
+  display: none !important;
 }
 
 .sidebar-header {

@@ -201,12 +201,13 @@ if (presetSelect) {
     });
   });
 }
+
 /* PLAYLIST DESLIZANTE MOBILE */
 
 const sidebar = document.querySelector(".sidebar");
 const dragBar = document.querySelector(".drag-bar");
 
-if (dragBar) {
+if (sidebar && dragBar) {
   dragBar.addEventListener("click", () => {
     sidebar.classList.toggle("open");
   });

@@ -2,7 +2,6 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>BluePlayer</title>
@@ -11,14 +10,28 @@
     <link rel="stylesheet" href="src/css/mobile.css" />
 
     <link rel="manifest" href="manifest.json" />
-
     <link rel="icon" href="icon-192.png" />
-
     <meta name="theme-color" content="#0b0f1a" />
   </head>
 
   <body>
     <div class="layout">
+      <!-- PLAYLIST -->
+
+      <aside class="sidebar">
+        <div class="drag-bar"></div>
+
+        <div class="sidebar-header">
+          <h1 class="logo">BluePlayer</h1>
+
+          <label for="file-input" id="upload-btn"> Adicionar músicas </label>
+
+          <input type="file" id="file-input" multiple accept="audio/*" hidden />
+        </div>
+
+        <ul id="playlist"></ul>
+      </aside>
+
       <!-- PLAYER -->
 
       <main class="player">
@@ -94,22 +107,6 @@
           <button id="next">⏭</button>
         </div>
       </main>
-
-      <!-- PLAYLIST -->
-
-      <aside class="sidebar">
-        <div class="drag-bar"></div>
-
-        <div class="sidebar-header">
-          <h1 class="logo">BluePlayer</h1>
-
-          <label for="file-input" id="upload-btn"> Adicionar músicas </label>
-
-          <input type="file" id="file-input" multiple accept="audio/*" hidden />
-        </div>
-
-        <ul id="playlist"></ul>
-      </aside>
     </div>
 
     <footer class="footer">
